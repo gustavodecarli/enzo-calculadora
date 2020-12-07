@@ -34,7 +34,7 @@ body {
 }
 
 .result-calc .display {
-    color: black;
+    color: rgb(0, 0, 0);
     font-size: 1.75rem;
     text-align: right;
 }
