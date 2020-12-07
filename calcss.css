@@ -25,7 +25,7 @@ body {
     grid-column: 1 / -1;
     background-color: rgba(0, 0, 0, .75);
     display: flex;
-    align-items: flex-end;
+    align-items: normal;
     justify-content: space-around;
     flex-direction: column;
     padding: 10px;
