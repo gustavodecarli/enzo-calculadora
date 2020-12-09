@@ -1,7 +1,10 @@
 const botonNumeros = document.getElementsByName('data-number');
 const botonOpera = document.getElementsByName('data-opera');
+const botonSigno = document.getElementsByName('data-signo');
+const botonExp = document.getElementsByName('data-exponente');
 const botonIgual = document.getElementsByName('data-igual') [0];
 const botonBorrar = document.getElementsByName('data-borrar') [0];
+const botonDEL = document.getElementsByName('data-borrarparcial');
 var result = document.getElementById('result');
 var operActual = '';
 var operAnterior = '';
@@ -28,6 +31,11 @@ botonBorrar.addEventListener('click', function(){
         Borrar();
         actualizarDisplay();
 });
+
+/* botonExp.addEventListener('click', function(){
+        Elevar();
+        actualizarDisplay();
+}); */
 
 function SelectOperacion(op){
     if(operActual === '') return;
@@ -64,6 +72,15 @@ function calcular(){
     operacion = undefined;
     operAnterior = '';
 }
+ 
+/*function Elevar(){
+    const base = parseFloat(operbase);
+    const exp = parseFloat(operexp);
+    var result = base
+
+    for(var i=1; i<exp; i++){
+        result = result * base;
+}; */
 
 function escribirNumero(num){
     operActual = operActual.toString() + num.toString();
@@ -81,4 +98,3 @@ function actualizarDisplay(){
 }
 
 Borrar();
-
