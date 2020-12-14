@@ -1,7 +1,6 @@
 const botonNumeros = document.getElementsByName('data-number');
 const botonOpera = document.getElementsByName('data-opera');
 const botonSigno = document.getElementsByName('data-signo');
-const botonExp = document.getElementsByName('data-exponente');
 const botonIgual = document.getElementsByName('data-igual') [0];
 const botonBorrar = document.getElementsByName('data-borrar') [0];
 const botonDEL = document.getElementsByName('data-borrarparcial');
@@ -28,14 +27,14 @@ botonIgual.addEventListener('click', function(){
 });
 
 botonBorrar.addEventListener('click', function(){
-        Borrar();
+        borrar();
         actualizarDisplay();
 });
 
-/* botonExp.addEventListener('click', function(){
+botonExp.addEventListener('click', function(){
         Elevar();
         actualizarDisplay();
-}); */
+});
 
 function SelectOperacion(op){
     if(operActual === '') return;
@@ -65,29 +64,36 @@ function calcular(){
         case '/':
             calculo = anterior / actual;
             break;
+        /*case '^':
+            calculo = anterior ** actual;*/
+        case '^':
+            calculo = exponencial(anterior, actual);
+            break;
         default:
-            return
+            return;
     }
     operActual = calculo;
     operacion = undefined;
     operAnterior = '';
 }
- 
-/*function Elevar(){
-    const base = parseFloat(operbase);
-    const exp = parseFloat(operexp);
-    var result = base
 
-    for(var i=1; i<exp; i++){
-        result = result * base;
-}; */
+function exponencial (base, exponente){
 
+    var valorInicial = 1;
+
+    for(var i = 0; i < exponente; i++){
+        valorinicial = valorinicial * base;
+    }
+
+    return valorInicial;
+}
+    
 function escribirNumero(num){
     operActual = operActual.toString() + num.toString();
     actualizarDisplay();
 }
 
-function Borrar(){
+function borrar(){
     operActual = '';
     operAnterior = '';
     operacion = undefined;
@@ -97,4 +103,4 @@ function actualizarDisplay(){
     result.value = operActual;
 }
 
-Borrar();
+borrar();
