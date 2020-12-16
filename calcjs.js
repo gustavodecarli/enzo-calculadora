@@ -31,11 +31,6 @@ botonBorrar.addEventListener('click', function(){
         actualizarDisplay();
 });
 
-botonExp.addEventListener('click', function(){
-        Elevar();
-        actualizarDisplay();
-});
-
 function SelectOperacion(op){
     if(operActual === '') return;
     if(operAnterior !== ''){
@@ -82,7 +77,7 @@ function exponencial (base, exponente){
     var valorInicial = 1;
 
     for(var i = 0; i < exponente; i++){
-        valorinicial = valorinicial * base;
+        valorInicial = valorInicial * base;
     }
 
     return valorInicial;
