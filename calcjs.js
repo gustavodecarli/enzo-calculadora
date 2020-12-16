@@ -59,8 +59,6 @@ function calcular(){
         case '/':
             calculo = anterior / actual;
             break;
-        /*case '^':
-            calculo = anterior ** actual;*/
         case '^':
             calculo = exponencial(anterior, actual);
             break;
