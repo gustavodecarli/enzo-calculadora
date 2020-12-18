@@ -62,12 +62,19 @@ function calcular(){
         case '^':
             calculo = exponencial(anterior, actual);
             break;
+        case '√':
+            calculo = raiz (anterior);
+            break;
         default:
             return;
     }
     operActual = calculo;
     operacion = undefined;
     operAnterior = '';
+}
+
+function raiz (numero){
+    return Math.sqrt(numero);
 }
 
 function exponencial (base, exponente){
