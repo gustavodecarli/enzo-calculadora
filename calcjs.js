@@ -33,10 +33,21 @@ botonBorrar.addEventListener('click', function(){
 
 function SelectOperacion(op){
     if(operActual === '') return;
+
+    operacion = op.toString();
+
+    // Si es una operacion simple
+    // no necesita 2 valoes
+    if (operacion == '√'){
+        operAnterior = operActual;
+        botonIgual.click();
+        return
+    }
+    
+    // Operacion de 2 miembros
     if(operAnterior !== ''){
         calcular()
     }
-    operacion = op.toString();
     operAnterior = operActual;
     operActual = '';
 }
