@@ -31,17 +31,29 @@ botonBorrar.addEventListener('click', function(){
         actualizarDisplay();
 });
 
+/* botonSigno.addEventListener('click', function(){
+    signo();
+    actualizarDisplay();
+} */ //esto me tiro error. fijate los data signo-data opera quizas sea por ahi, el data del html tambien
+// abajo de todo cree la funcion para este addevent pero como me tiro error no segui
+
 function SelectOperacion(op){
     if(operActual === '') return;
 
     operacion = op.toString();
 
     // Si es una operacion simple
-    // no necesita 2 valoes
-    if (operacion == '√'){
+    // no necesita 2 valores
+    if (operacion == '√'/* ,'+/-'*/){
         operAnterior = operActual;
         botonIgual.click();
         return
+    }
+
+    if (operacion == '+/-'){
+        operAnterior = operActual;
+        botonSigno.click();
+        return Math.abs(numero);
     }
     
     // Operacion de 2 miembros
@@ -76,6 +88,8 @@ function calcular(){
         case '√':
             calculo = raiz (anterior);
             break;
+        case '+/-': signo (anterior);
+            break; 
         default:
             return;
     }
@@ -87,6 +101,10 @@ function calcular(){
 function raiz (numero){
     return Math.sqrt(numero);
 }
+
+/* function signo (numero){
+    return Math.abs(numero);
+} */
 
 function exponencial (base, exponente){
 
@@ -113,5 +131,9 @@ function borrar(){
 function actualizarDisplay(){
     result.value = operActual;
 }
+
+/* function signo(){
+
+} */
 
 borrar();
