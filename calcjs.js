@@ -22,8 +22,7 @@ botonOpera.forEach(function(boton){
 });
 
 botonIgual.addEventListener('click', function(){
-        calcular();
-        actualizarDisplay();
+        calcularMostrar();
 });
 
 botonBorrar.addEventListener('click', function(){
@@ -46,14 +45,14 @@ function SelectOperacion(op){
     // no necesita 2 valores
     if (operacion == '√'/* ,'+/-'*/){
         operAnterior = operActual;
-        botonIgual.click();
+        calcularMostrar();
         return
     }
 
     if (operacion == '+/-'){
         operAnterior = operActual;
-        botonSigno.click();
-        return Math.abs(numero);
+        calcularMostrar();
+        return ;
     }
     
     // Operacion de 2 miembros
@@ -88,14 +87,27 @@ function calcular(){
         case '√':
             calculo = raiz (anterior);
             break;
+<<<<<<< HEAD
         /* case '+/-': signo (anterior);
             break;  */
+=======
+        case '+/-': 
+            calculo = signo (anterior);
+            break; 
+>>>>>>> b0109892d7a2dad360cdc863d6b72940f2ff46fc
         default:
             return;
     }
     operActual = calculo;
     operacion = undefined;
     operAnterior = '';
+}
+
+/* Funcion que aplica el calculo y muestra  */
+/* el sresultado en pantalla                */ 
+function calcularMostrar(){
+    calcular();
+    actualizarDisplay();
 }
 
 function raiz (numero){
@@ -132,8 +144,10 @@ function actualizarDisplay(){
     result.value = operActual;
 }
 
-/* function signo(){
+function signo(numero){
+    return numero * -1;
+} 
 
-} */
+
 
 borrar();
