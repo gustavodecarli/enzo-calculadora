@@ -88,8 +88,8 @@ function calcular(){
         case '√':
             calculo = raiz (anterior);
             break;
-        case '+/-': signo (anterior);
-            break; 
+        /* case '+/-': signo (anterior);
+            break;  */
         default:
             return;
     }
