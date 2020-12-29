@@ -1,9 +1,8 @@
 const botonNumeros = document.getElementsByName('data-number');
 const botonOpera = document.getElementsByName('data-opera');
-const botonSigno = document.getElementsByName('data-signo');
 const botonIgual = document.getElementsByName('data-igual') [0];
 const botonBorrar = document.getElementsByName('data-borrar') [0];
-const botonDEL = document.getElementsByName('data-borrarparcial');
+const botonDEL = document.getElementsByName('data-DEL') [0];
 var result = document.getElementById('result');
 var operActual = '';
 var operAnterior = '';
@@ -30,11 +29,10 @@ botonBorrar.addEventListener('click', function(){
         actualizarDisplay();
 });
 
-/* botonSigno.addEventListener('click', function(){
-    signo();
-    actualizarDisplay();
-} */ //esto me tiro error. fijate los data signo-data opera quizas sea por ahi, el data del html tambien
-// abajo de todo cree la funcion para este addevent pero como me tiro error no segui
+botonDEL.addEventListener('click', function(){
+        back();
+        actualizarDisplay();
+});
 
 function SelectOperacion(op){
     if(operActual === '') return;
@@ -43,7 +41,7 @@ function SelectOperacion(op){
 
     // Si es una operacion simple
     // no necesita 2 valores
-    if (operacion == '√'/* ,'+/-'*/){
+    if (operacion == '√'){
         operAnterior = operActual;
         calcularMostrar();
         return
@@ -52,8 +50,14 @@ function SelectOperacion(op){
     if (operacion == '+/-'){
         operAnterior = operActual;
         calcularMostrar();
-        return ;
+        return
     }
+/* 
+    if (operacion == 'DEL'){
+        operAnterior = operActual;
+        calcularMostrar();
+        return
+    } */
     
     // Operacion de 2 miembros
     if(operAnterior !== ''){
@@ -62,6 +66,12 @@ function SelectOperacion(op){
     operAnterior = operActual;
     operActual = '';
 }
+
+/* function evitarceros(cero){
+    if (operActual === 00) return 0;
+} */
+
+
 
 function calcular(){
     var calculo;
@@ -87,14 +97,12 @@ function calcular(){
         case '√':
             calculo = raiz (anterior);
             break;
-<<<<<<< HEAD
-        /* case '+/-': signo (anterior);
-            break;  */
-=======
         case '+/-': 
             calculo = signo (anterior);
-            break; 
->>>>>>> b0109892d7a2dad360cdc863d6b72940f2ff46fc
+            break;/* 
+        case 'DEL':
+            calculo = DEL (actual);ç
+            break; */
         default:
             return;
     }
@@ -104,7 +112,7 @@ function calcular(){
 }
 
 /* Funcion que aplica el calculo y muestra  */
-/* el sresultado en pantalla                */ 
+/* el resultado en pantalla                */ 
 function calcularMostrar(){
     calcular();
     actualizarDisplay();
@@ -113,10 +121,6 @@ function calcularMostrar(){
 function raiz (numero){
     return Math.sqrt(numero);
 }
-
-/* function signo (numero){
-    return Math.abs(numero);
-} */
 
 function exponencial (base, exponente){
 
@@ -140,6 +144,13 @@ function borrar(){
     operacion = undefined;
 }
 
+function back(){
+    var num = operAnterior;
+    console.log(operAnterior);
+    var operActual = num.slice(0, -1);
+    
+}
+
 function actualizarDisplay(){
     result.value = operActual;
 }
@@ -147,7 +158,5 @@ function actualizarDisplay(){
 function signo(numero){
     return numero * -1;
 } 
-
-
 
 borrar();
