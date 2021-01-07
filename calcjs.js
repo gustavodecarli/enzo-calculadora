@@ -35,6 +35,7 @@ botonDEL.addEventListener('click', function(){
 });
 
 function SelectOperacion(op){
+
     if(operActual === '') return;
 
     operacion = op.toString();
@@ -75,9 +76,12 @@ function SelectOperacion(op){
 
 function calcular(){
     var calculo;
-    const anterior = parseFloat(operAnterior);
-    const actual = parseFloat(operActual);
+
+    const anterior  = parseFloat(operAnterior);
+    const actual    = parseFloat(operActual);
+
     if(isNaN(anterior) || isNaN(actual)) return;
+
     switch(operacion){
         case '+':
             calculo = anterior + actual;
@@ -144,11 +148,9 @@ function borrar(){
     operacion = undefined;
 }
 
-function back(){
-    var num = operAnterior;
-    console.log(operAnterior);
-    var operActual = num.slice(0, -1);
-    
+function back(){    
+    operActual = operActual.toString().slice(0,-1);
+    actualizarDisplay();
 }
 
 function actualizarDisplay(){
