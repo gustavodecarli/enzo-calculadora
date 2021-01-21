@@ -62,10 +62,6 @@ function SelectOperacion(op){
     operActual = '';
 }
 
-function evitarceros(cero){
-    if (operActual === 00) return 0;
-}
-
 function calcular(){
     var calculo;
 
