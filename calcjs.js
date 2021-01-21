@@ -53,12 +53,6 @@ function SelectOperacion(op){
         calcularMostrar();
         return
     }
-/* 
-    if (operacion == 'DEL'){
-        operAnterior = operActual;
-        calcularMostrar();
-        return
-    } */
     
     // Operacion de 2 miembros
     if(operAnterior !== ''){
@@ -68,11 +62,9 @@ function SelectOperacion(op){
     operActual = '';
 }
 
-/* function evitarceros(cero){
+function evitarceros(cero){
     if (operActual === 00) return 0;
-} */
-
-
+}
 
 function calcular(){
     var calculo;
@@ -139,6 +131,11 @@ function exponencial (base, exponente){
     
 function escribirNumero(num){
     operActual = operActual.toString() + num.toString();
+
+    if(Number(operActual) == 0){
+        operActual = '';
+    }
+
     actualizarDisplay();
 }
 
